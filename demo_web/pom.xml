@@ -15,21 +15,29 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
-<!--		<dependency>-->
-<!--			<groupId>com.sdf</groupId>-->
-<!--			<artifactId>demo_facade</artifactId>-->
-<!--			<version>1.0.0</version>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>com.sdf</groupId>
+			<artifactId>demo_facade</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
-		<!--	引入jdbc	-->
+		<!--	引入JPA	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
+		<!--	引入jdbc	-->
+		<!--<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>-->
 
 		<!--	引入web启动主程序	-->
 		<dependency>
@@ -38,17 +46,24 @@
 		</dependency>
 
 		<!--	引入mybatis	-->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.1.2</version>
+		</dependency>-->
+		<!--	引入mybatis-plus	-->
+		<!--<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>3.1.0</version>
+		</dependency>-->
+
+		<!-- for mybatis and page -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.12</version>
 		</dependency>
-<!--		&lt;!&ndash; for mybatis and page &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>com.github.pagehelper</groupId>-->
-<!--			<artifactId>pagehelper-spring-boot-starter</artifactId>-->
-<!--			<version>1.2.12</version>-->
-<!--		</dependency>-->
 
 		<!--	引入mysql	-->
 		<dependency>
@@ -62,6 +77,34 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
 			<version>1.1.10</version>
+		</dependency>
+
+		<!--	引入lombok	-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+			<!--<version>1.18.8</version>
+			<scope>provided</scope>-->
+		</dependency>
+
+		<!--	引入swagger2	-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<!--	swagger-UI	-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<!--	swagger优化后的UI	-->
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>swagger-bootstrap-ui</artifactId>
+			<version>1.9.6</version>
 		</dependency>
 
 		<!--	引入springBoot的单元测试	-->

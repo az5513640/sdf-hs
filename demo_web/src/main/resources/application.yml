@@ -1,7 +1,7 @@
 server:
   port: 8135
   servlet:
-    context-path: /demo
+    context-path: /sdf
   tomcat:
     uri-encoding: UTF-8
 
@@ -10,8 +10,11 @@ spring:
     active: sdf
   aop:
     auto: true
+#  jackson时间格式化
   jackson:
-    time-zone: Asia/Shanghai
+    time-zone: GMT+8
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: Asia/Shanghai
     serialization:
       write-dates-as-timestamps: true
 #  横幅：off：关闭打印、console:控制台打印、log:日志打印
@@ -21,6 +24,7 @@ spring:
 #  配置数据库连接
   datasource:
 #    url: jdbc:mysql://134.175.103.104/jdbc?useUnicode=true&characterEncoding=utf8&useSSL=false
+#    url: jdbc:mysql://134.175.103.104/jdbc?serverTimezone=Hongkong&characterEncoding=utf8&useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    username: root
 #    password: 111111
@@ -66,7 +70,7 @@ spring:
         enabled: false           # 是否启用statViewServlet配置(监控web页面)，默认关闭配置监控服务器, 1.1.10以后的版本需要指定为true 不然默认是关闭的就会出现404
 #        url-pattern: "/druid/*"     # 访问监控页面
 #        reset-enable: false         # 禁止手动重置监控数据
-        login-username: sdfAdmin      # 设置监控页面的登陆名
+        login-username: druidadmin      # 设置监控页面的登陆名
         login-password: 111111        # 设置监控页面的登陆密码
         deny: 10.0.0.198      # 添加IP黑名单，当白名单和黑名单重复时，黑名单优先级更高
         allow: 10.0.0.127      # 添加IP白名单
@@ -80,3 +84,56 @@ spring:
         profile-enable: true              # 是否启用监控单个Url调用的sql列表
 #        principal-session-name: session_user_key  # 使druid当前session的用户是谁，session_user_key是你保存到session中的sessionName
 #        principal-cookie-name: cookie_user_key    # 使druid当前的user是谁,cookie_user_key是你保存在cookie中的cookieName
+
+
+#mybatis-plus:
+mybatis:
+  type-aliases-package: com.sdf.*.entity,com.sdf.*.queryform      # 它一般对应我们的实体类所在的包，这个时候会自动取对应包中类名作为别名，不区分大小写，多个 package 之间可以用逗号或者分号等来进行分隔
+  mapper-locations:
+  - classpath:mapper/*/*/*.xml      # 映射文件地址
+#  global-config:
+#    #数据库相关配置
+#    db-config:
+#      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+#      id-type: id_worker_str
+#      #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+#      field-strategy: not_null
+##      #驼峰下划线转换
+##      table-underline: true
+##      #数据库大写下划线转换
+##      capital-mode: true
+##      #逻辑删除配置
+##      logic-delete-value: 1
+##      logic-not-delete-value: 0
+#      #数据库类型
+#      db-type: mysql
+##    banner: false
+  configuration:
+    cache-enabled: true             # 使全局的映射器启用或禁用缓存
+    lazy-loading-enabled: false     # 开启延迟加载，使得关联属性都按需加载，而不自动加载
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    use-generated-keys: false
+    default-executor-type: simple
+    default-statement-timeout: 25
+    default-fetch-size: 100
+    safe-row-bounds-enabled: false
+    map-underscore-to-camel-case: true
+    local-cache-scope: session
+    jdbc-type-for-null: null
+    call-setters-on-nulls: true
+    lazy-load-trigger-methods:
+      - equals
+      - clone
+      - hashCode
+      - toString
+
+#swagger
+swagger:
+  title: sdf_Demo API_SWAGGER接口文档
+  description: sdf_Demo API_Swagger Documentation
+  version: 1.0.0
+  termsOfServiceUrl: https://website.sdfdemo.com
+  name: sdf_demo
+  url: https://website.sdfdemo.com
+  email: 978190993@qq.com
